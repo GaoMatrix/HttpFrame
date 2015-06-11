@@ -13,6 +13,8 @@ import java.io.InputStream;
 public abstract class AbstractCallback implements ICallback{
 
     public String path;
+    
+    @Override
     public Object handle(HttpResponse response) throws Exception {
         // file, json, xml, string, image
         HttpEntity entity = response.getEntity();

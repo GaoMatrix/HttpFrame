@@ -3,7 +3,7 @@ package com.gao.http.net;
 
 import org.apache.http.HttpEntity;
 
-import java.net.URI;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,7 +20,7 @@ public class Request {
     public String url;
     public HttpEntity entity;
     public Map<String, String> headers;
-    public AbstractCallback callback;
+    public ICallback callback;
     
     public Request(String url, RequestMethod method) {
         this.url = url;
@@ -30,5 +30,21 @@ public class Request {
     public Request(String url) {
         this.url = url;
         this.method = RequestMethod.GET;;
+    }
+    
+    public void setCallback(ICallback callback) {
+        this.callback = callback;
+    }
+    
+    public void addHeader(String key, String value) {
+        if (headers == null) {
+            headers = new HashMap<String, String>();
+        }
+        headers.put(key, value);
+    }
+
+    public void execute() {
+        RequestTask task = new RequestTask(this);
+        task.execute();
     }
 }

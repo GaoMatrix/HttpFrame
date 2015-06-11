@@ -42,7 +42,7 @@ public class RequestTask extends AsyncTask<Void, Integer, Object> {
             if (result instanceof Exception) {
                 request.callback.onFailure((Exception)result);
             } else {
-                request.callback.onSuccess((Exception)result);
+                request.callback.onSuccess(result);
             }
         }
     }

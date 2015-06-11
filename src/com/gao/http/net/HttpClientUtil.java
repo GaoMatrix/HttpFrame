@@ -55,8 +55,10 @@ public class HttpClientUtil {
     }
     
     private static void setHeaders(HttpUriRequest httpUriRequest, Map<String, String> headers) {
-        for (Entry<String, String> entry : headers.entrySet()) {
-            httpUriRequest.addHeader(entry.getKey(), entry.getValue());
+        if (headers != null && headers.size() > 0) {
+            for (Entry<String, String> entry : headers.entrySet()) {
+                httpUriRequest.addHeader(entry.getKey(), entry.getValue());
+            }
         }
     }
     
