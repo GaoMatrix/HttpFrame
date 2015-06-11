@@ -1,5 +1,5 @@
 
-package com.gao.http;
+package com.gao.http.net;
 
 import org.apache.http.HttpEntity;
 
@@ -20,6 +20,7 @@ public class Request {
     public String url;
     public HttpEntity entity;
     public Map<String, String> headers;
+    public AbstractCallback callback;
     
     public Request(String url, RequestMethod method) {
         this.url = url;

@@ -1,4 +1,4 @@
-package com.gao.http;
+package com.gao.http.net;
 
 import android.content.Entity;
 
