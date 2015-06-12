@@ -25,7 +25,7 @@ public abstract class AbstractCallback implements ICallback{
                     InputStream is = entity.getContent();
                     byte[] buffer = new byte[2048];
                     int len = -1;
-                    while (is.read(buffer) != -1) {
+                    while ((len = is.read(buffer))  != -1) {
                         fos.write(buffer, 0, len);
                     }
                     is.close();
@@ -49,6 +49,11 @@ public abstract class AbstractCallback implements ICallback{
      */
     protected Object bindData(String content) {
         return content;
+    }
+
+    public  AbstractCallback cache(String path) {
+        this.path = path;
+        return this;//链式写法
     }
 
     //只有上层才使用为了避免混淆，单独移出来
