@@ -33,7 +33,7 @@ public abstract class AbstractCallback implements ICallback{
                     fos.close();
                     return bindData(path);
                 } else {
-                    return bindData(EntityUtils.toString(entity));
+                    return bindData(EntityUtils.toString(entity, "UTF-8"));
                 }
             default:
                 break;
