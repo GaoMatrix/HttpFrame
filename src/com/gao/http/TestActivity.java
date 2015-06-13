@@ -59,9 +59,8 @@ public class TestActivity extends Activity{
             }
 
             @Override
-            public void onSuccess(Object result) {
-                ArrayList<ModuleEntity> entities = (ArrayList<ModuleEntity>) result;
-                for (ModuleEntity moduleEntity : entities) {
+            public void onSuccess(ArrayList<ModuleEntity> result) {
+                for (ModuleEntity moduleEntity : result) {
                     Log.d(TAG,  "moduleName: " +  moduleEntity.getModuleName());
                 }   
             }

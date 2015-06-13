@@ -10,12 +10,12 @@ import org.apache.http.util.EntityUtils;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-public abstract class AbstractCallback implements ICallback{
+public abstract class AbstractCallback<T> implements ICallback<T>{
 
     public String path;
     
     @Override
-    public Object handle(HttpResponse response) throws Exception {
+    public T handle(HttpResponse response) throws Exception {
         // file, json, xml, string, image
         HttpEntity entity = response.getEntity();
         switch (response.getStatusLine().getStatusCode()) {
@@ -47,9 +47,8 @@ public abstract class AbstractCallback implements ICallback{
      * @param string
      * @return
      */
-    protected Object bindData(String content) {
-        return content;
-    }
+    // 让子类来实现
+    protected abstract T bindData(String content) ;
 
     public  AbstractCallback cache(String path) {
         this.path = path;

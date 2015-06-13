@@ -4,12 +4,12 @@ import com.gao.http.utilities.JsonParser;
 
 import java.lang.reflect.Type;
 
-public abstract class JsonCallback<T>  extends AbstractCallback{
+public abstract class JsonCallback<T>  extends AbstractCallback<T>{
     private Class<T> mReturnClass;
     private Type mReturnType;
     
     @Override
-    protected Object bindData(String json) {
+    protected T bindData(String json) {
         if (mReturnClass != null) {
             return JsonParser.deserializeFromJson(json, mReturnClass);
         } else if (mReturnType != null) {
